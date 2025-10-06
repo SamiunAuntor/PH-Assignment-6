@@ -42,17 +42,17 @@
                 <ul tabindex="0"
                     class="dropdown-content bg-white rounded-md border-2 border-black z-[1] mt-3 w-52 p-0 overflow-hidden">
                     <li>
-                        <a href="#" class="block text-black cursor-pointer px-4 py-2 border-b-2 border-black">
+                        <a href="#about" class="block text-black cursor-pointer px-4 py-2 border-b-2 border-black">
                             About
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="block text-black cursor-pointer px-4 py-2 border-b-2 border-black">
+                        <a href="#gallery" class="block text-black cursor-pointer px-4 py-2 border-b-2 border-black">
                             Gallery
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="block text-black cursor-pointer px-4 py-2">
+                        <a href="#plant-a-tree" class="block text-black cursor-pointer px-4 py-2">
                             Plant a Tree
                         </a>
                     </li>
@@ -68,15 +68,15 @@
         <!-- Desktop menu -->
         <div class="navbar-center hidden lg:flex">
             <ul class="flex space-x-6">
-                <li><a href="#" class="text-white cursor-pointer">About</a></li>
-                <li><a href="#" class="text-white cursor-pointer">Gallery</a></li>
-                <li><a href="#" class="text-white cursor-pointer">Plant a Tree</a></li>
+                <li><a href="#about" class="text-white cursor-pointer">About</a></li>
+                <li><a href="#gallery" class="text-white cursor-pointer">Gallery</a></li>
+                <li><a href="#plant-a-tree" class="text-white cursor-pointer">Plant a Tree</a></li>
             </ul>
         </div>
 
         <!-- Right -->
         <div class="navbar-end mr-6">
-            <button class="rounded-full px-6 bg-[#FACC15] px-5 py-3 text-[#14532D]">Plant a Tree</button>
+            <a href="#plant-a-tree" class="rounded-full px-6 bg-[#FACC15] px-5 py-3 text-[#14532D]">Plant a Tree</a>
         </div>
     </div>
 
@@ -106,7 +106,7 @@
     </section>
 
     <!-- Choose trees section -->
-    <section class="choose-trees pt-24 bg-[#e5f9f1]">
+    <section id="gallery" class="choose-trees pt-24 bg-[#e5f9f1]">
         <h2 class="text-center font-semibold text-3xl mt">Choose Your Trees</h2>
         <div class="choose-trees-inner-container flex flex-col lg:flex-row w-11/12 items-start mx-auto mt-12 gap-6">
             <div class="categories w-full lg:w-1/5">
@@ -140,7 +140,7 @@
     </section>
 
     <!-- About the Campaign Section -->
-    <section class="about-section py-16 px-4 bg-[#e5f9f1] lg:px-20">
+    <section id="about" class="about-section py-16 px-4 bg-[#e5f9f1] lg:px-20">
         <h2 class="text-3xl font-bold text-center text-[#1F2937] mb-12">About the Campaign</h2>
         <div class="flex flex-col lg:flex-row items-center gap-8 max-w-6xl mx-auto">
             <!-- Image -->
@@ -189,7 +189,7 @@
     </section>
 
     <!-- Plant a Tree Today Section -->
-    <section class="form-section py-16 px-4 lg:px-20 bg-[#14532D]">
+    <section id="plant-a-tree" class="form-section py-16 px-4 lg:px-20 bg-[#14532D]">
         <h2 class="text-3xl font-bold text-center text-white mb-8">Plant a Tree Today</h2>
         <form class="w-full max-w-[650px] mx-auto bg-[#166534] rounded-2xl px-6 sm:px-12 py-10 shadow-lg space-y-5">
             <input type="text" placeholder="Your Name"
