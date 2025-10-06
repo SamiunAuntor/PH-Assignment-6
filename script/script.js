@@ -1,3 +1,6 @@
+// Cart array to store items
+let cart = [];
+
 const getCategories = () => {
     const url = "https://openapi.programming-hero.com/api/categories";
     fetch(url)
@@ -41,12 +44,12 @@ const getPlants = (btn) => {
         b.classList.add("bg-white", "text-black");
     });
 
-    // Add active to clicked button (or first button if no button is passed)
+    // Add active to clicked button
     if (btn) {
         btn.classList.add("bg-[#15803D]", "text-white");
         btn.classList.remove("bg-white", "text-black");
     } else {
-        // If no button passed (initial load), select the first button (All Trees)
+        // If no button passed, select the first button
         const firstBtn = document.querySelector(".category-btn");
         if (firstBtn) {
             firstBtn.classList.add("bg-[#15803D]", "text-white");
@@ -85,7 +88,7 @@ const displayPlants = (plants) => {
                     <span class="font-semibold">৳</span>${plant.price}
                 </h2>
             </div>
-            <button class="w-full bg-[#15803D] text-white text-base py-2.5 rounded-full mt-3 mb-4 hover:bg-[#166534] transition-colors">
+            <button onclick='addToCart(${JSON.stringify(plant)})' class="w-full bg-[#15803D] text-white text-base py-2.5 rounded-full mt-3 mb-4 hover:bg-[#166534] transition-colors">
                 Add to Cart
             </button>
         </div>
@@ -102,6 +105,79 @@ const showPlantModal = (plant) => {
     document.getElementById('modal-plant-category').textContent = plant.category;
     document.getElementById('modal-plant-price').textContent = plant.price;
     plant_modal.showModal();
+}
+
+// Add to cart function
+const addToCart = (plant) => {
+    // Check if plant already exists in cart
+    const existingItem = cart.find(item => item.name === plant.name);
+    
+    if (existingItem) {
+        // If exists, increase quantity
+        existingItem.quantity++;
+    } else {
+        // If not, add new item with quantity 1
+        cart.push({ ...plant, quantity: 1 });
+    }
+    
+    displayCart();
+}
+
+// Display cart items
+const displayCart = () => {
+    const cartContainer = document.getElementById('cart-items');
+    const totalElement = document.getElementById('cart-total');
+    
+    // Clear cart display
+    cartContainer.innerHTML = '';
+    
+    // Calculate total
+    let total = 0;
+    
+    // Display each cart item
+    cart.forEach((item, index) => {
+        const itemTotal = parseFloat(item.price) * item.quantity;
+        total += itemTotal;
+        
+        cartContainer.innerHTML += `
+            <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                <div class="flex flex-col">
+                    <span class="text-base font-semibold text-[#1F2937]">${item.name}</span>
+                    <div class="flex items-center gap-2 mt-1">
+                        <span class="text-sm text-gray-600">৳${item.price} × ${item.quantity}</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="decrementQuantity(${index})" class="bg-gray-200 hover:bg-gray-300 text-[#1F2937] font-bold w-6 h-6 rounded flex items-center justify-center">−</button>
+                    <button onclick="incrementQuantity(${index})" class="bg-gray-200 hover:bg-gray-300 text-[#1F2937] font-bold w-6 h-6 rounded flex items-center justify-center">+</button>
+                    <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 text-lg ml-1">❌</button>
+                </div>
+            </div>
+        `;
+    });
+    
+    // Update total
+    totalElement.textContent = total.toFixed(0);
+}
+
+// Remove from cart function - removes entire item
+const removeFromCart = (index) => {
+    cart.splice(index, 1);
+    displayCart();
+}
+
+// Increment quantity
+const incrementQuantity = (index) => {
+    cart[index].quantity++;
+    displayCart();
+}
+
+// Decrement quantity
+const decrementQuantity = (index) => {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+        displayCart();
+    }
 }
 
 getPlants();

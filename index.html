@@ -108,8 +108,8 @@
     <!-- Choose trees section -->
     <section class="choose-trees pt-24 bg-[#e5f9f1]">
         <h2 class="text-center font-semibold text-3xl mt">Choose Your Trees</h2>
-        <div class="choose-trees-inner-container flex w-11/12 items-start justify-between mx-auto mt-12 gap-6">
-            <div class="categories">
+        <div class="choose-trees-inner-container flex w-11/12 items-start mx-auto mt-12 gap-6">
+            <div class="categories w-1/5">
                 <h2 class="text-xl font-bold">Categories</h2>
                 <div id="category-options" class="category-buttons flex flex-col">
                     <button onclick="getPlants(this)"
@@ -120,11 +120,20 @@
                     <!-- all categories will load here dynamically from API -->
                 </div>
             </div>
-            <div class="product-cards grid grid-cols-3 gap-7">
+            <div class="product-cards w-3/5 grid grid-cols-3 gap-7">
                 <!-- all product cards will load here dynamically from API -->
             </div>
-            <div class="cart">
-
+            <div class="cart w-1/5 bg-white rounded-2xl shadow-md p-6 h-fit">
+                <h2 class="text-xl font-bold text-[#1F2937] mb-4">Your Cart</h2>
+                <div id="cart-items" class="mb-4">
+                    <!-- Cart items will be displayed here -->
+                </div>
+                <div class="pt-4 border-t-2 border-gray-300">
+                    <div class="flex justify-between items-center">
+                        <span class="text-lg font-bold text-[#1F2937]">Total</span>
+                        <span class="text-lg font-bold text-[#1F2937]">৳<span id="cart-total">0</span></span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -217,7 +226,7 @@
     <!-- Plant Details Modal -->
     <dialog id="plant_modal" class="modal">
         <div class="modal-box max-w-2xl">
-            <!-- Tree Name - Centered -->
+            <!-- Tree Name -->
             <h3 id="modal-plant-name" class="text-2xl font-bold text-[#1F2937] text-center mb-4"></h3>
             
             <!-- Photo -->
@@ -241,7 +250,7 @@
                 <span id="modal-plant-description" class="ml-2 text-[#4B5563]"></span>
             </div>
             
-            <!-- Close Button - Right Lower Side -->
+            <!-- Close Button -->
             <div class="flex justify-end">
                 <form method="dialog">
                     <button class="btn bg-[#15803D] text-white hover:bg-[#166534]">Close</button>
