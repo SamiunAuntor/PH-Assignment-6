@@ -73,7 +73,7 @@ const displayPlants = (plants) => {
             <div class="card bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
         <div class="pl-4 pt-4 pr-4 pb-1 flex flex-col flex-1">
             <img src="${plant.image}" alt="${plant.name}" class="w-full h-40 object-cover rounded-xl">
-            <h2 class="text-sm font-semibold mt-3">${plant.name}</h2>
+            <h2 onclick='showPlantModal(${JSON.stringify(plant)})' class="text-sm font-semibold mt-3 cursor-pointer hover:text-[#15803D] transition-colors">${plant.name}</h2>
             <p class="text-xs text-[#1F2937] mt-1 leading-relaxed flex-1">
                 ${plant.description}
             </p>
@@ -92,6 +92,16 @@ const displayPlants = (plants) => {
     </div>
         `;
     }
+}
+
+// Show plant modal
+const showPlantModal = (plant) => {
+    document.getElementById('modal-plant-name').textContent = plant.name;
+    document.getElementById('modal-plant-image').src = plant.image;
+    document.getElementById('modal-plant-description').textContent = plant.description;
+    document.getElementById('modal-plant-category').textContent = plant.category;
+    document.getElementById('modal-plant-price').textContent = plant.price;
+    plant_modal.showModal();
 }
 
 getPlants();

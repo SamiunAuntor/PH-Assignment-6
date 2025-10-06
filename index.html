@@ -214,7 +214,41 @@
         <p class="text-white text-sm">© 2025 Green Earth. All Rights Reserved.</p>
     </footer>
 
-
+    <!-- Plant Details Modal -->
+    <dialog id="plant_modal" class="modal">
+        <div class="modal-box max-w-2xl">
+            <!-- Tree Name - Centered -->
+            <h3 id="modal-plant-name" class="text-2xl font-bold text-[#1F2937] text-center mb-4"></h3>
+            
+            <!-- Photo -->
+            <img id="modal-plant-image" src="" alt="Plant" class="w-full h-64 object-cover rounded-xl mb-4">
+            
+            <!-- Category -->
+            <div class="mb-3">
+                <span class="font-bold text-[#1F2937]">Category:</span>
+                <span id="modal-plant-category" class="ml-2 text-[#4B5563]"></span>
+            </div>
+            
+            <!-- Price -->
+            <div class="mb-3">
+                <span class="font-bold text-[#1F2937]">Price:</span>
+                <span class="ml-2 text-[#4B5563]"><span class="font-semibold">৳</span><span id="modal-plant-price"></span></span>
+            </div>
+            
+            <!-- Description -->
+            <div class="mb-6">
+                <span class="font-bold text-[#1F2937]">Description:</span>
+                <span id="modal-plant-description" class="ml-2 text-[#4B5563]"></span>
+            </div>
+            
+            <!-- Close Button - Right Lower Side -->
+            <div class="flex justify-end">
+                <form method="dialog">
+                    <button class="btn bg-[#15803D] text-white hover:bg-[#166534]">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
     <script src="./script/script.js"></script>
 </body>
