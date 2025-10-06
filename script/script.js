@@ -8,21 +8,42 @@ const getCategories = () => {
 
 const displayCategories = (categories) => {
     const categoriesContainer = document.getElementById("category-options");
-    categoriesContainer.innerHTML = "";
+    // categoriesContainer.innerHTML = "";
 
     for (const category of categories) {
         categoriesContainer.innerHTML += `
-            <button class="text-base py-2 px-4 text-left whitespace-nowrap">
-                ${category.category_name}
-            </button>
-        `;
+        <button onclick="displayCurrentCategoryCards(${category.id}, this)" 
+            class="category-btn text-base py-2 px-4 text-left whitespace-nowrap mt-2 rounded-md bg-white text-black">
+        ${category.category_name}
+        </button>
+`;
+
     }
 }
 
 getCategories();
 
 
-const getPlants = () => {
+const getPlants = (btn) => {
+    // Remove active from all buttons
+    document.querySelectorAll(".category-btn").forEach(b => {
+        b.classList.remove("bg-[#15803D]", "text-white");
+        b.classList.add("bg-white", "text-black");
+    });
+
+    // Add active to clicked button (or first button if no button is passed)
+    if (btn) {
+        btn.classList.add("bg-[#15803D]", "text-white");
+        btn.classList.remove("bg-white", "text-black");
+    } else {
+        // If no button passed (initial load), select the first button (All Trees)
+        const firstBtn = document.querySelector(".category-btn");
+        if (firstBtn) {
+            firstBtn.classList.add("bg-[#15803D]", "text-white");
+            firstBtn.classList.remove("bg-white", "text-black");
+        }
+    }
+
     const url = "https://openapi.programming-hero.com/api/plants";
     fetch(url)
         .then(res => res.json())
@@ -61,3 +82,23 @@ const displayPlants = (plants) => {
 }
 
 getPlants();
+
+const displayCurrentCategoryCards = (id, btn) => {
+    // Remove active from all buttons
+    document.querySelectorAll(".category-btn").forEach(b => {
+        b.classList.remove("bg-[#15803D]", "text-white");
+        b.classList.add("bg-white", "text-black");
+    });
+
+    // Add active to clicked button
+    btn.classList.add("bg-[#15803D]", "text-white");
+    btn.classList.remove("bg-white", "text-black");
+
+    const url = `https://openapi.programming-hero.com/api/category/${id}`
+
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayPlants(data.plants))
+        .catch(err => console.log(err));
+
+}
