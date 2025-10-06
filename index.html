@@ -108,8 +108,8 @@
     <!-- Choose trees section -->
     <section class="choose-trees pt-24 bg-[#e5f9f1]">
         <h2 class="text-center font-semibold text-3xl mt">Choose Your Trees</h2>
-        <div class="choose-trees-inner-container flex w-11/12 items-start mx-auto mt-12 gap-6">
-            <div class="categories w-1/5">
+        <div class="choose-trees-inner-container flex flex-col lg:flex-row w-11/12 items-start mx-auto mt-12 gap-6">
+            <div class="categories w-full lg:w-1/5">
                 <h2 class="text-xl font-bold">Categories</h2>
                 <div id="category-options" class="category-buttons flex flex-col">
                     <button onclick="getPlants(this)"
@@ -120,10 +120,10 @@
                     <!-- all categories will load here dynamically from API -->
                 </div>
             </div>
-            <div class="product-cards w-3/5 grid grid-cols-3 gap-7">
+            <div class="product-cards w-full lg:w-3/5 grid grid-cols-1 lg:grid-cols-3 gap-7">
                 <!-- all product cards will load here dynamically from API -->
             </div>
-            <div class="cart w-1/5 bg-white rounded-2xl shadow-md p-6 h-fit">
+            <div class="cart w-full lg:w-1/5 bg-white rounded-2xl shadow-md p-6 h-fit">
                 <h2 class="text-xl font-bold text-[#1F2937] mb-4">Your Cart</h2>
                 <div id="cart-items" class="mb-4">
                     <!-- Cart items will be displayed here -->
