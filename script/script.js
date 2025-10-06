@@ -24,6 +24,16 @@ const displayCategories = (categories) => {
 getCategories();
 
 
+// Show loading spinner
+const showLoading = () => {
+    const productCards = document.querySelector(".product-cards");
+    productCards.innerHTML = `
+        <div class="col-span-3 flex justify-center items-center py-20">
+            <span class="loading loading-spinner loading-xl text-[#15803D]"></span>
+        </div>
+    `;
+}
+
 const getPlants = (btn) => {
     // Remove active from all buttons
     document.querySelectorAll(".category-btn").forEach(b => {
@@ -43,6 +53,9 @@ const getPlants = (btn) => {
             firstBtn.classList.remove("bg-white", "text-black");
         }
     }
+
+    // Show loading spinner
+    showLoading();
 
     const url = "https://openapi.programming-hero.com/api/plants";
     fetch(url)
@@ -93,6 +106,9 @@ const displayCurrentCategoryCards = (id, btn) => {
     // Add active to clicked button
     btn.classList.add("bg-[#15803D]", "text-white");
     btn.classList.remove("bg-white", "text-black");
+
+    // Show loading spinner
+    showLoading();
 
     const url = `https://openapi.programming-hero.com/api/category/${id}`
 
